@@ -4,7 +4,7 @@ use Mix.Config
 config :delivery_center_parsing_api, DeliveryCenterParsingApi.Repo,
   username: "postgres",
   password: "postgres",
-  database: "delivery_center_parsing_api_dev",
+  database: "delivery-DB",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
