@@ -9,8 +9,6 @@ defmodule DeliveryCenterParsingApi.Application do
     children = [
       # Start the Ecto repository
       DeliveryCenterParsingApi.Repo,
-      # Start the Telemetry supervisor
-      DeliveryCenterParsingApiWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: DeliveryCenterParsingApi.PubSub},
       # Start the Endpoint (http/https)
