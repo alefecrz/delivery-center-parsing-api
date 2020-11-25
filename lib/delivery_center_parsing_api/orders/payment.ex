@@ -3,35 +3,17 @@ defmodule DeliveryCenterParsingApi.Orders.Payment do
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  schema "order" do
-    field :externalCode, :string
-    field :storeId, :integer
-    field :subTotal, :string
-    field :deliveryFee, :string
-    field :total, :string
-    field :country, :string
-    field :state, :string
-    field :city, :string
-    field :district, :string
-    field :street, :string
-    field :complement, :string
-    field :latitude, :float
-    field :longitude, :float
-    field :dtOrderCreate, :utc_datetime
-    field :postalCode, :string
-    field :number, :string
+  schema "payment" do
+    belongs_to :orderId, DeliveryCenterParsingApi.Orders.Order, type: :binary_id
+    field :type, :string
+    field :value, :float
 
     timestamps()
   end
 
   # @unique_msg            "Este valor já está sendo usado"
   def changeset(order, attrs) do
-    fields = [:externalCode, :storeId,
-      :subTotal, :deliveryFee, :total,
-      :country, :state, :city,
-      :district, :street, :complement,
-      :latitude, :longitude, :dtOrderCreate,
-      :postalCode, :number]
+    fields = [:type, :orderId, :value ]
     order
     |> cast(attrs, fields)
     |> validate_required(fields)
